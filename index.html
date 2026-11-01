@@ -277,7 +277,7 @@
     }
 
     /* Mise en page accueil : texte + vidéo */
-    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+    .hero-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2rem; align-items: center; }
     .pitch-slot {
       aspect-ratio: 16 / 9;
       display: flex; align-items: center; justify-content: center; text-align: center;
@@ -288,7 +288,12 @@
       color: var(--accent);
       font-weight: 600;
     }
-    .pitch-slot video, .pitch-slot iframe { width: 100%; height: 100%; border: 0; border-radius: 16px; }
+    .pitch-video { width: 100%; max-width: 300px; justify-self: center; aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden; box-shadow: 0 8px 22px rgba(27,67,50,.2); background: #000; position: relative; }
+    .pitch-video iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .pitch-facade { all: unset; cursor: pointer; position: relative; width: 100%; height: 100%; display: block; }
+    .pitch-facade img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .pitch-facade .play { position: absolute; inset: 0; margin: auto; width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,.9); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+    .pitch-facade:hover .play { transform: scale(1.08); }
     @media (max-width: 720px) { .hero-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -321,18 +326,19 @@
       <h1>Edgar Piroird</h1>
       <div class="hero-grid">
         <div class="hero-text">
-        <p class="lead fr">Élève ingénieur à l'ENSEEIHT, spécialité électricité, énergie, électronique et automatique.</p>
-        <p class="lead en">Engineering student at ENSEEIHT, specialising in electricity, energy, electronics and automation.</p>
+<p class="lead fr">Élève ingénieur à l'ENSEEIHT, spécialité électricité, énergie, électronique et automatique.</p>
+<p class="lead en">Engineering student at ENSEEIHT, specialising in electricity, energy, electronics and automation.</p>
 
-        <p class="fr">Passionné par l'énergie et l'automatique, je suis élève ingénieur à Toulouse. Ici, vous découvrirez mon parcours, le TIPE que j'ai mené en prépa, mes engagements associatifs et ce qui m'anime en dehors des cours : le sport, la musique et l'automobile.</p>
-        <p class="en">Driven by energy and automation, I'm an engineering student in Toulouse. Here you'll find my academic path, the TIPE research project I carried out in preparatory class, my volunteering work, and what drives me outside of class: sport, music and cars.</p>
+<p class="fr">Passionné par l'énergie et l'automatique, je suis élève ingénieur à Toulouse. Ici, vous découvrirez mon parcours, le TIPE que j'ai mené en prépa, mes engagements associatifs et ce qui m'anime en dehors des cours : le sport, la musique et l'automobile.</p>
+<p class="en">Driven by energy and automation, I'm an engineering student in Toulouse. Here you'll find my academic path, the TIPE research project I carried out in preparatory class, my volunteering work, and what drives me outside of class: sport, music and cars.</p>
         </div>
-        <div class="pitch-slot">
-          <!-- Vidéo de présentation (pitch élévator) : remplacer le contenu de ce bloc par la balise <video> ou <iframe> fournie -->
-          <span class="fr">Vidéo de présentation à venir</span><span class="en">Introduction video coming soon</span>
+        <div class="pitch-video">
+          <button type="button" class="pitch-facade" aria-label="Lire la vidéo de présentation" onclick="this.parentElement.innerHTML='<iframe src=&quot;https://www.youtube-nocookie.com/embed/T_IUapFSYjw?autoplay=1&amp;rel=0&quot; allow=&quot;autoplay; encrypted-media; picture-in-picture&quot; allowfullscreen title=&quot;Pitch élévator&quot;></iframe>'">
+            <img src="assets/pitch-apercu.jpeg" alt="Aperçu de la vidéo de présentation" loading="lazy">
+            <span class="play">&#9654;</span>
+          </button>
         </div>
       </div>
-
       <p>
         <a class="btn" href="assets/CV_Edgar_Piroird_FR.pdf">
           <span class="fr">CV français</span><span class="en">French CV</span>
@@ -376,7 +382,6 @@
         <p><span class="fr">Étude expérimentale de la variation du coefficient de frottement statique d'un caoutchouc sur bois, entre 30 et 70 °C, à l'aide d'une étuve, d'un dynamomètre et d'une modélisation Monte Carlo pour estimer les incertitudes. Les mesures montrent que le coefficient augmente avec la température (μs ≈ 0,00284·T + 0,742). L'étude examine aussi l'effet de la surface de contact et, à titre de preuve de concept, celui des stries d'un pneu sur son échauffement.</span><span class="en">Experimental study of how the static friction coefficient of rubber on wood varies between 30 and 70 °C, using an oven, a dynamometer and a Monte Carlo model to estimate uncertainties. The measurements show that the coefficient increases with temperature (μs ≈ 0.00284·T + 0.742). The study also examines the effect of contact area and, as a proof of concept, the effect of tyre grooves on heating.</span></p>
         <p><span class="fr">Mon rôle : conception du dispositif expérimental, acquisition des mesures, traitement statistique en Python et présentation orale.</span><span class="en">My role: designing the setup, taking measurements, statistical analysis in Python and oral presentation.</span></p>
         <img src="assets/tipe-experience.jpeg" alt="Montage expérimental du TIPE : caoutchouc sur support en bois, masse et dynamomètre" loading="lazy" style="width:100%;height:auto;border-radius:12px;margin:.8rem 0;">
-        <p><a class="btn" href="assets/tipe-diaporama.pdf" target="_blank" rel="noopener"><span class="fr">Voir le diaporama (PDF)</span><span class="en">View the slides (PDF)</span></a></p>
       </div>
     </div>
   </section>
